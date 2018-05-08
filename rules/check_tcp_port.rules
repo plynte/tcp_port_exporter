@@ -1,0 +1,10 @@
+groups:
+- name: check_tcp_ports.rules
+  rules:
+  - alert: TcpPortIsDown
+    expr: (check_tcp_port == 0)
+    for: 5m
+    labels:
+      severity: Critical
+    annotations:
+      title: 'TCP Port of {{ $labels.host }}:{{ $labels.port }} is Down For 5 Minutes!Current Value:{{$value}}'

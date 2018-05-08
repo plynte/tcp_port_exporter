@@ -1,0 +1,15 @@
+[Unit]
+
+Description=TCP_Port_Exporter
+
+After=network.target
+
+[Service]
+User=prometheus
+Group=prometheus
+WorkingDirectory=/opt/prometheus/tcp_port_exporter/
+ExecStart=/opt/prometheus/tcp_port_exporter/tcp_port_exporter.py
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
